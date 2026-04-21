@@ -315,8 +315,9 @@ const ProjectModal = ({ project, isOpen, onClose }: { project: Project | null, i
               </Button>
             )}
             {project.liveUrl && (
-              <Button 
-                className="bg-accent-primary text-bg-primary hover:bg-accent-primary/90 flex-grow sm:flex-grow-0" // Themed primary action button
+              <Button
+                variant="outline"
+                className="border-border-primary bg-bg-secondary text-text-primary hover:bg-accent-primary hover:text-bg-primary flex-grow sm:flex-grow-0"
                 asChild
               >
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
