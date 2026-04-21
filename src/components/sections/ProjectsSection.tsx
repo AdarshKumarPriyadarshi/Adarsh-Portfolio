@@ -305,7 +305,7 @@ const ProjectModal = ({ project, isOpen, onClose }: { project: Project | null, i
             {project.githubUrl && (
               <Button 
                 variant="outline" // Shadcn outline typically uses border color
-                className="border-border-primary text-text-primary hover:bg-accent-primary hover:text-bg-primary flex-grow sm:flex-grow-0" // Themed outline button
+                className="border-border-primary bg-bg-secondary text-text-primary hover:bg-accent-primary hover:text-bg-primary flex-grow sm:flex-grow-0"
                 asChild
               >
                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">

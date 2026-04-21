@@ -101,17 +101,6 @@ const ContactSection = () => {
               </div>
               <span className="text-lg">github.com/AdarshKumarPriyadarshi</span>
             </a>
-            {/* <a
-              href="https://manansantoki.xyz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 text-text-primary hover:text-accent-primary transition-colors group"
-            >
-              <div className="p-3 border-2 border-border-primary rounded group-hover:border-accent-primary transition-colors">
-                <Globe size={22} />
-              </div>
-              <span className="text-lg">manansantoki.xyz</span>
-            </a> */}
           </div>
         </div>
 

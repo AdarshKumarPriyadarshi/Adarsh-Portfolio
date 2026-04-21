@@ -3,9 +3,9 @@ version: '3.8'
 services:
   # This is your main portfolio application, presumably managed by Dokploy.
   # Dokploy will apply its own Traefik labels to this service for
-  # www.manansantoki.xyz and potentially manansantoki.xyz.
+  # www.adarshkumarpriyadarshi.com and potentially adarshkumarpriyadarshi.com.
   # We are NOT adding redirect labels directly to this service anymore.
-  portfolio-manan:
+  portfolio-adarsh:
     build:
       context: .
       dockerfile: Dockerfile
@@ -27,19 +27,19 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=dokploy-network"
 
-      # --- Routers for manansantoki.xyz (non-www) on this redirector service ---
+      # --- Routers for adarshkumarpriyadarshi.com (non-www) on this redirector service ---
 
-      # 1. HTTP non-www: redirect to HTTPS www.manansantoki.xyz
-      #    High priority to ensure it's matched before any Dokploy router for manansantoki.xyz.
-      - "traefik.http.routers.redirector-nonwww-http.rule=Host(`manansantoki.xyz`)"
+      # 1. HTTP non-www: redirect to HTTPS www.adarshkumarpriyadarshi.com
+      #    High priority to ensure it's matched before any Dokploy router for adarshkumarpriyadarshi.com.
+      - "traefik.http.routers.redirector-nonwww-http.rule=Host(`adarshkumarpriyadarshi.com`)"
       - "traefik.http.routers.redirector-nonwww-http.entrypoints=web"
       - "traefik.http.routers.redirector-nonwww-http.priority=200" # Very high priority
       - "traefik.http.routers.redirector-nonwww-http.middlewares=redirect-nonwww-to-https-www@docker"
       # No service needed for this router, it only redirects.
 
-      # 2. HTTPS non-www: redirect to HTTPS www.manansantoki.xyz
+      # 2. HTTPS non-www: redirect to HTTPS www.adarshkumarpriyadarshi.com
       #    High priority. Needs TLS.
-      - "traefik.http.routers.redirector-nonwww-https.rule=Host(`manansantoki.xyz`)"
+      - "traefik.http.routers.redirector-nonwww-https.rule=Host(`adarshkumarpriyadarshi.com`)"
       - "traefik.http.routers.redirector-nonwww-https.entrypoints=websecure"
       - "traefik.http.routers.redirector-nonwww-https.priority=200" # Very high priority
       - "traefik.http.routers.redirector-nonwww-https.tls.certresolver=letsencrypt"
@@ -48,8 +48,8 @@ services:
 
       # --- Middleware definition for this redirector service ---
       # This middleware is defined by labels on *this* non-www-redirector service.
-      - "traefik.http.middlewares.redirect-nonwww-to-https-www.redirectregex.regex=^https?://manansantoki\\.xyz/(.*)"
-      - "traefik.http.middlewares.redirect-nonwww-to-https-www.redirectregex.replacement=https://www.manansantoki.xyz/$${1}"
+      - "traefik.http.middlewares.redirect-nonwww-to-https-www.redirectregex.regex=^https?://adarshkumarpriyadarshi\\.xyz/(.*)"
+      - "traefik.http.middlewares.redirect-nonwww-to-https-www.redirectregex.replacement=https://www.adarshkumarpriyadarshi.com/$${1}"
       - "traefik.http.middlewares.redirect-nonwww-to-https-www.redirectregex.permanent=true"
     networks:
       - dokploy-network
