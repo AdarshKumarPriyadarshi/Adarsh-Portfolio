@@ -51,6 +51,34 @@ const projectsData: Project[] = [
     challenges: "Tuning ML models for accuracy, handling diverse user data, and ensuring seamless integration between a responsive frontend and the Flask-based backend."
   },
   {
+    id: "STARC_EDF_Automation",
+    title: "STARC ED Automation",
+    description: "Desktop application that automates conversion of STARC test cases into EDF (Evaluation Description Files) for digital vehicle testing at Mercedes-Benz.", 
+    image: "STARC_EDF_Automation.png", 
+    tech: ["Python", "PyQt6", "OpenPyXL", "XML", "REST API", "YAML", "Selenium"],
+    githubUrl: "https://github.com/AdarshKumarPriyadarshi/STARC-EDF-Automation.git",
+    liveUrl: "http://53.217.101.197:8081/",
+    fullDescription: "A production-grade desktop tool that fetches STARC test cases via API, parses Excel-based test steps (SET signals, verify signals, preconditions), resolves signal names through a 1,872-entry YAML alias mapping, and generates schema-compliant EDF XML files used by the DAVT digital testing framework for automated vehicle function validation.",
+    problem: "Engineers manually converted STARC test cases to EDF files — a tedious, error-prone process involving signal name resolution across CAN/idc6/x2e/rclog paths, complex XML structure generation with nested TimeSeg and expectedResult elements, and handling of 15+ module-specific patterns across 700+ test cases.",
+    solution: "Built an end-to-end automation pipeline: API-driven test case fetching, intelligent signal parsing with 7-strategy alias resolution (exact match, suffix stripping, snake_case conversion, typo correction, interactive GUI prompt), universal flat AND TimeSeg generation, support for 6 comparison operators, OR boolean logic, davt timing attributes (delay_ms,duration_min/max), signal sequence transitions (sigseq), and batch processing with detailed error reporting.",
+    role: "Software Developer. Responsibilities included designing the EDF generation engine, building the PyQt6 GUI with dark/light themes, implementing the signal alias mapping service with CAN/verify path filtering, developing the STARC API integration with Selenium-based authentication, and creating the batch processing pipeline with real-time progress tracking and log export.",
+    challenges: "Handling 37 distinct parsing edge cases across 15 modules (SIF paths, double-equals operators, truncated signals, negative/percentage values), resolving ambiguous signal names across 924 CAN and 1,696 verify YAML entries without false positives, maintaining XSD schema compliance for all generated EDFs, and designing a universal generator that replaced 8 module-specific TimeSeg structure types."
+  },
+  {
+    id: "Minerva_Bench_Tracker",
+    title: "Minerva Bench Tracker",
+    description: "Real-time lab bench occupancy tracker with automated check-in/check-out detection and a live monitoring dashboard.",
+    image:  "Minerva_Bench_Tracker.png",
+    tech: ["FastAPI", "SQLite", "JavaScript", "Tkinter", "Python", "HTML/CSS"],
+    githubUrl: "https://github.com/AdarshKumarPriyadarshi/Bench-Usage-Automation",
+    liveUrl: "http://53.217.101.197:8081/",
+    fullDescription: "A full-stack bench usage automation system for MBRDI Minerva lab benches — featuring a real-time dashboard with live timers, toast notifications, and animated stats, paired with Windows and Linux client agents that automatically detect user sessions via RDP/NoMachine/physical access.",
+    problem: "Engineers at MBRDI share 5 lab benches (each with a Windows and Linux PC) but had no visibility into which benches were free, who was using them, or for how long — leading to wasted time walking to the lab, interrupted work, and no usage analytics.",
+    solution: "Built a 3-tier system: a FastAPI server with SQLite hosting a live dashboard, Windows clients using WTS session events and scheduled tasks, and Linux clients using systemd services with NoMachine connection detection — all communicating via REST APIs for automatic occupancy tracking.",    
+    role: "Full-stack developer. Designed the FastAPI backend with SQLite WAL-mode database, built the real-time dashboard with vanilla JS (diff-based rendering, CSS animations), and developed native desktop clients for both Windows (WTS API + Tkinter) and Linux (systemd + Tkinter with NoMachine compatibility).",
+    challenges: "Handling NoMachine's X11 protocol quirks on Linux — Tkinter's overrideredirect and topmost attributes cause system hangs over remote sessions. Solved with dialog-type windows and periodic lift() calls. Also overcame corporate proxy restrictions blocking pip by using system-site-packages venvs."
+  },
+  {
     id: "smart_life_manager",
     title: "Smart Life Manager",
     description: "Full-stack productivity app with task management, notes, reminders, and real-time weather tracking via CLI and REST API.",
@@ -63,35 +91,7 @@ const projectsData: Project[] = [
     solution: "Built an integrated FastAPI backend with SQLite persistence serving a feature-rich CLI client, providing seamless task/priority management, simple notes, smart reminders (all/today views), and geocoded weather with automatic history logging.",
     role: "Full-stack developer architecting FastAPI REST endpoints, SQLite database schema, manager classes for each module, CLI menu system, and external API integrations while ensuring robust error handling and empty-state messaging.",
     challenges: "Implementing consistent JSON serialization across SQLite tuple results for all endpoints, handling external weather API failures gracefully, and creating intuitive CLI navigation with proper message display for empty data states across unreliable networks."
-  }
-  
-  // {
-  //   id: "ai-chatbot",
-  //   title: "AI Chatbot with LangChain RAG",
-  //   description: "Advanced conversational AI using document embedding and retrieval augmented generation for context-aware responses.",
-  //   image: placeholderImage,
-  //   tech: ["Python", "LangChain", "TensorFlow", "NLP", "Vector Database", "FastAPI", "Docker"],
-  //   githubUrl: "#",
-  //   fullDescription: "An intelligent chatbot capable of understanding complex queries and providing contextually relevant answers by leveraging a large knowledge base. It uses Retrieval Augmented Generation (RAG) to combine the strengths of LLMs with specific domain data.",
-  //   problem: "Standard chatbots often lack deep contextual understanding, cannot access up-to-date or proprietary information, and tend to provide generic or sometimes incorrect responses (hallucinations).",
-  //   solution: "Implemented a RAG system where user queries first retrieve relevant document chunks from a vectorized knowledge base. These chunks are then provided as context to a Large Language Model (LLM) to generate an informed and accurate response.",
-  //   role: "AI Engineer. Responsibilities included data preprocessing, setting up and optimizing the vector database, developing the retrieval mechanism, fine-tuning the LLM (if applicable), and building the API for integration.",
-  //   challenges: "Optimizing the vector search for speed and relevance over large document collections, minimizing LLM hallucination, and managing the computational costs associated with embeddings and generation."
-  // },
-  // {
-  //   id: "inventory",
-  //   title: "Inventory Control System",
-  //   description: "Full-stack inventory management solution with real-time tracking and analytics dashboards for business optimization.",
-  //   image:  "https://s3.manansantoki.xyz/public/jalaramwiremesh.com.png",
-  //   tech: ["Next.js", "PostgreSQL", "Tailwind CSS", "Recharts", "Authentication", "Prisma"], // Added Prisma to tech
-  //   githubUrl: "#", // Added GitHub URL as per original structure
-  //   liveUrl: "#",
-  //   fullDescription: "A comprehensive inventory management system designed for small to medium-sized businesses, featuring barcode scanning, supplier management, purchase order tracking, sales analytics, and predictive stock forecasting.",
-  //   problem: "Many small businesses rely on manual methods (e.g., spreadsheets) for inventory management, leading to stockouts, overstocking, inaccuracies, and inefficient operations.",
-  //   solution: "Developed an intuitive, web-based system that automates inventory tracking, provides real-time stock levels, generates insightful reports, and offers tools for better forecasting and order management.",
-  //   role: "Full-stack developer. Handled frontend development with Next.js and Tailwind CSS, backend API development with Node.js (via Next.js API routes) and Prisma ORM, and PostgreSQL database design.",
-  //   challenges: "Designing a flexible and scalable database schema to accommodate diverse inventory types and business rules, and creating an offline-first architecture component that syncs data seamlessly when connectivity is restored."
-  // },
+  },
   // {
   //   id: "llm-finetuning",
   //   title: "Fine-Tuning LLM with QLoRA",
