@@ -42,7 +42,7 @@ const projectsData: Project[] = [
     title: "College-Genie",
     description: "College Genie – Designed and developed an AI-based college recommendation platform for master’s programs abroad, leveraging academic scores and standardized test results (GRE, GMAT, IELTS). Implemented machine learning algorithms (KNN, Decision Tree) using Python, and integrated with a web frontend built using Tailwind CSS, HTML, and APIs for seamless user interaction.",
     image: "/College-Genie.png", // Use your placeholder or specific image path
-    tech: ["Pyhton", "Machine Learning", "Flask", "MySQL", "HTML", "TailwindCSS", "JSON", "Typescript"],
+    tech: ["Python", "Machine Learning", "Flask", "MySQL", "HTML", "TailwindCSS", "JSON", "Typescript"],
     githubUrl: "https://github.com/AdarshKumarPriyadarshi/CollegeGenie",
     liveUrl: "https://preview--college-genie-find.lovable.app/",
     fullDescription: "College Genie – AI-based platform recommending universities for master’s programs abroad using academic scores and test results (GRE, GMAT, IELTS). Built with Python, Flask, and Tailwind CSS, the system uses KNN and Decision Tree algorithms to deliver personalized, data-driven college suggestions via a responsive web interface.",
@@ -52,7 +52,7 @@ const projectsData: Project[] = [
   },
   {
     id: "STARC_EDF_Automation",
-    title: "STARC ED Automation",
+    title: "STARC EDF Automation",
     description: "Desktop application that automates conversion of STARC test cases into EDF (Evaluation Description Files) for digital vehicle testing at Mercedes-Benz.", 
     image: "STARC_EDF_Automation.png", 
     tech: ["Python", "PyQt6", "OpenPyXL", "XML", "REST API", "YAML", "Selenium"],
